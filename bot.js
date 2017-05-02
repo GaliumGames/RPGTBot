@@ -16,6 +16,8 @@ function tweetEvent(eventMsg) {
 
 function tweet(txt) {
 	
+	txt += '[' + String(Math.floor(Math.random() * 10000)) + ']';
+	
 	var tweet = {
 		status: txt
 	}
