@@ -9,12 +9,30 @@ var stream = T.stream('user');
 
 stream.on('tweet', tweetEvent);
 
+
+var commandSynonyms = { //
+	'help': {'help', 'commands'}, 
+	'move': {'move', 'go'}, 
+	'scan': {'scan', 'look around'} 
+}
+
+var context = { //
+	help: {''}
+	move: {'up', 'down', 'left', 'right', 'north', 'south', 'west', 'east', 'forward', 'backward'}
+	scan: {''}
+}
+
 start();
 
 
 function start()
 {
 	console.log('The RPGT Bot has started');
+	
+	for (var i = 0; i < commandSynonyms.length; i++) //
+	{
+		console.log(commandSynonyms[i]);
+	}
 }
 
 function tweetEvent(eventMsg) {
@@ -53,6 +71,16 @@ function tweet(txt) {
 		}
 	}
 }
+
+// function commandHelp() {
+	// var str = '';
+	
+	// for (var i = 0; i < commandSynonyms.length; i++)
+	// {
+		
+	// }
+	
+// }
 
 function dumpError(err) {
 	var fs = require('fs');
