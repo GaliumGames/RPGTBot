@@ -10,16 +10,16 @@ var stream = T.stream('user');
 stream.on('tweet', tweetEvent);
 
 
-var commandSynonyms = { //
-	'help': {'help', 'commands'}, 
-	'move': {'move', 'go'}, 
-	'scan': {'scan', 'look around'} 
-}
+var commandSynonyms = [ //
+	['help', 'commands'], 
+	['move', 'go'], 
+	['scan', 'look around']
+]
 
 var context = { //
-	help: {''}
-	move: {'up', 'down', 'left', 'right', 'north', 'south', 'west', 'east', 'forward', 'backward'}
-	scan: {''}
+	'help': [''],
+	'move': ['up', 'down', 'left', 'right', 'north', 'south', 'west', 'east', 'forward', 'backward'],
+	'scan': ['']
 }
 
 start();
