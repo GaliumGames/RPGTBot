@@ -1,4 +1,5 @@
 console.log('The RPGT Bot is starting');
+<<<<<<< HEAD
 
 
 var commandSynonyms = [ //
@@ -12,6 +13,8 @@ var context = { //
 	'move': ['up', 'down', 'left', 'right', 'north', 'south', 'west', 'east', 'forward', 'backward'],
 	'scan': ['']
 }
+=======
+>>>>>>> parent of b2249c0... Test Run
 
 start();
 
@@ -19,12 +22,16 @@ start();
 function start()
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	console.log('The RPGT Bot has started');
 	
 	for (var i = 0; i < commandSynonyms.length; i++) //
 	{
 		console.log(commandSynonyms[i]);
 	}
+=======
+	
+>>>>>>> parent of b2249c0... Test Run
 =======
 	
 >>>>>>> parent of b2249c0... Test Run
@@ -59,6 +66,7 @@ function tweet(txt) {
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 // function commandHelp() {
@@ -75,6 +83,8 @@ function dumpError(err) {
 	var fs = require('fs');
 	var json = JSON.stringify(err, null, 2);
 	fs.writeFile("err.json", json);
+=======
+>>>>>>> parent of b2249c0... Test Run
 =======
 >>>>>>> parent of b2249c0... Test Run
 }
