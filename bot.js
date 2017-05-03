@@ -1,45 +1,34 @@
-console.log('The RPGT Bot is starting');
-<<<<<<< HEAD
+console.log('initializing...');
 
+var Twit = require('twit');
 
-var commandSynonyms = [ //
-	['help', 'commands'], 
-	['move', 'go'], 
-	['scan', 'look around']
-]
+var config = require('./config');
+var T = new Twit(config);
 
-var context = { //
-	'help': [''],
-	'move': ['up', 'down', 'left', 'right', 'north', 'south', 'west', 'east', 'forward', 'backward'],
-	'scan': ['']
-}
-=======
->>>>>>> parent of b2249c0... Test Run
+var stream = T.stream('user');
+
+stream.on('tweet', tweetEvent);
 
 start();
 
 
 function start()
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
 	console.log('The RPGT Bot has started');
-	
-	for (var i = 0; i < commandSynonyms.length; i++) //
-	{
-		console.log(commandSynonyms[i]);
-	}
-=======
-	
->>>>>>> parent of b2249c0... Test Run
-=======
-	
->>>>>>> parent of b2249c0... Test Run
 }
 
 function tweetEvent(eventMsg) {
+	
+	var replyTo = eventMsg.in_reply_to_screen_name;
+	var text = eventMsg.text;
+	var senderUserName = eventMsg.user.screen_name;
+	var senderName = eventMsg.user.name;
 
-
+	if(replyTo === 'JohnLockeBot')
+	{
+		text = text.replace(/@JohnLockeBot /g, '');
+		//var gReturn = guess(text, senderName, senderUserName);
+	}
 
 }
 
@@ -56,35 +45,17 @@ function tweet(txt) {
 	function tweeted(err, data, response) {
 		if (err) {
 			console.log("Somthing went wrong when trying to tweet! Dumping to err file.");
-			var fs = require('fs');
-			var json = JSON.stringify(err, null, 2);
-			fs.writeFile("err.json", json);
+			dumpError(err);
 		}
 		else
 		{
 
 		}
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
-
-// function commandHelp() {
-	// var str = '';
-	
-	// for (var i = 0; i < commandSynonyms.length; i++)
-	// {
-		
-	// }
-	
-// }
 
 function dumpError(err) {
 	var fs = require('fs');
 	var json = JSON.stringify(err, null, 2);
 	fs.writeFile("err.json", json);
-=======
->>>>>>> parent of b2249c0... Test Run
-=======
->>>>>>> parent of b2249c0... Test Run
 }
