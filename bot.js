@@ -1,16 +1,34 @@
-console.log('The RPGT Bot is starting');
+console.log('initializing...');
+
+var Twit = require('twit');
+
+var config = require('./config');
+var T = new Twit(config);
+
+var stream = T.stream('user');
+
+stream.on('tweet', tweetEvent);
 
 start();
 
 
 function start()
 {
-	
+	console.log('The RPGT Bot has started');
 }
 
 function tweetEvent(eventMsg) {
+	
+	var replyTo = eventMsg.in_reply_to_screen_name;
+	var text = eventMsg.text;
+	var senderUserName = eventMsg.user.screen_name;
+	var senderName = eventMsg.user.name;
 
-
+	if(replyTo === 'JohnLockeBot')
+	{
+		text = text.replace(/@JohnLockeBot /g, '');
+		//var gReturn = guess(text, senderName, senderUserName);
+	}
 
 }
 
@@ -27,13 +45,17 @@ function tweet(txt) {
 	function tweeted(err, data, response) {
 		if (err) {
 			console.log("Somthing went wrong when trying to tweet! Dumping to err file.");
-			var fs = require('fs');
-			var json = JSON.stringify(err, null, 2);
-			fs.writeFile("err.json", json);
+			dumpError(err);
 		}
 		else
 		{
 
 		}
 	}
+}
+
+function dumpError(err) {
+	var fs = require('fs');
+	var json = JSON.stringify(err, null, 2);
+	fs.writeFile("err.json", json);
 }
