@@ -14,7 +14,7 @@ start();
 
 function start()
 {
-	console.log('The RPGT Bot has started');
+	console.log('The RPGTBot has started');
 }
 
 function tweetEvent(eventMsg) {
@@ -59,10 +59,6 @@ function tweet(txt) {
 		if (err) {
 			console.log('Somthing went wrong when trying to tweet! Dumping to err file.');
 			dumpError(err);
-		}
-		else
-		{
-
 		}
 	}
 }
