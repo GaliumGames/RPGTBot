@@ -4,7 +4,7 @@ var Twit = require('twit');
 
 var config = require('./config');
 var T = new Twit(config);
-
+var objects = require('./classes');
 var stream = T.stream('user');
 
 stream.on('tweet', tweetEvent);
@@ -68,3 +68,31 @@ function dumpError(err) {
 	var json = JSON.stringify(err, null, 2);
 	fs.writeFile("err.json", json);
 }
+
+
+
+
+
+
+
+//CLASSES?
+var PlayerInfo = {
+    'name': '',
+    'level': 0,
+    'xp': 0,
+    'position': new Vector2,
+    'inventory': new Inventory
+};
+
+var Inventory = [new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot];
+
+var InventorySlot = {
+    'name': '',
+    'amount': 0
+};
+
+var Vector2 = {
+    'x': 0,
+    'y': 0
+};
+
