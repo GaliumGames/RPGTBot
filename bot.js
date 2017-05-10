@@ -9,6 +9,43 @@ var stream = T.stream('user');
 
 stream.on('tweet', tweetEvent);
 
+function PlayerInfo () {
+    this.name = '';
+    this.level = 0;
+    this.xp = 0;
+    this.position = {x:0,y:0};
+    this.inventory = Inventory();
+};
+
+function Inventory (){
+    var inv = [];
+    for (var i = 0; i < 10; i++) {
+        inv[i] = {
+            name: '',
+            amount: 0
+        }
+    }
+    return inv;
+}
+
+var commands ={
+    'help':{
+        'synonms':['help', 'commands'],
+        'run': function (personFrom, context) {
+            //use file at data\players.json to get position and edit
+            //edit file at data\map.json to sync player position
+        },
+    },
+    'move': {
+        'synonms': ['move', 'goto'],
+        'run': function () { }
+    },
+    'scan': {
+        'synonms': ['scan', 'lookaround'],
+        'run': function () { }
+    }
+}
+
 start();
 
 
@@ -27,8 +64,9 @@ function tweetEvent(eventMsg) {
 
 	if(replyTo === 'JohnLockeBot')
 	{
-		text = text.replace(/@JohnLockeBot /g, '');
-	    //var gReturn = guess(text, senderName, senderUserName);
+	    text = text.replace(/@JohnLockeBot /g, '');
+	    text = text.replace(' ', '');
+		text = text.toLowerCase();
 		scanForCommands(from, text);
 	}
 
@@ -37,12 +75,6 @@ function tweetEvent(eventMsg) {
 function scanForCommands(personFrom, text)
 {
 
-}
-
-function move(personFrom, context)
-{
-    //use file at data\players.json to get position and edit
-    //edit file at data\map.json to sync player position
 }
 
 function tweet(txt) {
@@ -68,31 +100,3 @@ function dumpError(err) {
 	var json = JSON.stringify(err, null, 2);
 	fs.writeFile("err.json", json);
 }
-
-
-
-
-
-
-
-//CLASSES?
-var PlayerInfo = {
-    'name': '',
-    'level': 0,
-    'xp': 0,
-    'position': new Vector2,
-    'inventory': new Inventory
-};
-
-var Inventory = [new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot, new InventorySlot];
-
-var InventorySlot = {
-    'name': '',
-    'amount': 0
-};
-
-var Vector2 = {
-    'x': 0,
-    'y': 0
-};
-
