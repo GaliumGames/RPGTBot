@@ -31,14 +31,14 @@ function Inventory (){
 var commands ={
     'help':{
         'synonms':['help', 'commands'],
-        'run': function (personFrom, context) {
-            //use file at data\players.json to get position and edit
-            //edit file at data\map.json to sync player position
-        },
+        'run': function () {},
     },
     'move': {
         'synonms': ['move', 'goto'],
-        'run': function () { }
+        'run': function (personFrom, context) {
+            //use file at data\players.json to get position and edit
+            //edit file at data\map.json to sync player position
+        }
     },
     'scan': {
         'synonms': ['scan', 'lookaround'],
@@ -47,11 +47,13 @@ var commands ={
 }
 
 start();
+setInterval(function () {    
 
+}, 120000) //every 2 minutes
 
 function start()
 {
-	console.log('The RPGTBot has started');
+    console.log('The RPGTBot has started');
 }
 
 function tweetEvent(eventMsg) {
